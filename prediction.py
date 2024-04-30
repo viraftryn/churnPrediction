@@ -37,7 +37,7 @@ def main():
                                                      'EstimatedSalary', 'Balance', 'NumOfProducts'])
     
     # Encoding categorical variables
-    df['Gender'] = gender_encoded.transform(df['Gender'])
+    df = df.replace(gender_encoded)
     cat_geo = df[['Geography']]
     cat_enc_geo = pd.DataFrame(geography_encoded.transform(cat_geo).toarray(), columns=geography_encoded.get_feature_names_out())
     df = pd.concat([df, cat_enc_geo], axis=1)
